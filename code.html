@@ -15,11 +15,11 @@
 
 <body>
 	<header>
-		<ul>
+		<ul class="topnav" id="myTopnav">
 			<li><a href="index.html">THE FUTURE DEMOCRACIES LABORATORY
 			<img class="icon" src="./assets/gears-icon.svg" /></a></li>
 			<li>
-				<a href="simulator.html">
+				<a href="./democracy-engine-congressional-simulator/index.html">
 					SIMULATOR
 					<img class="icon" src="./assets/simulator-icon.svg" />
 				</a>
@@ -42,6 +42,11 @@
 					<img class="icon" src="./assets/code-icon.svg" />
 				</a>
 			</li>
+            
+<!--RH Add from drop-down menu-->
+            <a href="javascript:void(0);" style="font-size:15px;" class="icon2" onclick="myFunction()">&#9776;</a>
+<!--end RH Add from drop-down menu-->
+            
 		</ul>
 	</header>
 	<div id="page-container">
@@ -61,6 +66,20 @@
 
 
 	</div>
+    
+   <!--RH Add from drop-down menu-->
+    <script>
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+    </script>
+<!--RH Add from drop-down menu-->
+    
 </body>
 
 </html>
