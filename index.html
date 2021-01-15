@@ -16,7 +16,7 @@
 
 <body>
 	<header>
-		<ul>
+		<ul class="topnav" id="myTopnav">
 			<li><a class="active" href="index.html">THE FUTURE DEMOCRACIES LABORATORY
 			<img class="icon" src="./assets/gears-icon.svg" />
 		</a></li>
@@ -44,6 +44,7 @@
 					<img class="icon" src="./assets/code-icon.svg" />
 				</a>
 			</li>
+          <a href="javascript:void(0);" style="font-size:15px;" class="icon2" onclick="myFunction()">&#9776;</a>
 		</ul>
 	</header>
 
@@ -69,6 +70,17 @@ University students and CADRE faculty Rhonda Holberton and Steve Durie, the tran
 
 
 	</div>
+    
+    <script>
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+    </script>
 
 </body>
 
