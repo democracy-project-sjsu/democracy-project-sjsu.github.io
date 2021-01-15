@@ -188,8 +188,8 @@ div.body-header {
   /* Footer height */
 }
 
-/*RH add*/
-
+/*RH add from dropdown-test */
+/*/////////////////////////////////*/
 .topnav .icon2 {
   display: none;
 }
@@ -251,6 +251,9 @@ div.body-header {
     display: block;
   }
 }
+/*end rh add*/
+/*/////////////////////////////////*/
+
 
 @media only screen and (max-width: 1040px) {
 
@@ -261,7 +264,8 @@ div.body-header {
 /*    position: static;*/
   }
 
-    /*    RH add*/
+/*RH add from dropdown-test */
+/*/////////////////////////////////*/
     .topnav .icon {
       display: none;
     }
@@ -286,6 +290,7 @@ div.body-header {
   }
     
 /*    end rh add*/
+/*/////////////////////////////////*/
     
 
   div.body-text {
