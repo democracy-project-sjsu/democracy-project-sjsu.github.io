@@ -1,0 +1,67 @@
+<!DOCTYPE html><html lang="en"><head>
+    <script src="p5.js"></script>
+    <script src="p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8">
+
+    <style id="jsbin-css">
+    span { color: blue; font-family: sans-serif;}
+    </style> 
+    
+  </head>
+  <body>
+      
+    <div class="container">
+        
+    <div class="vote">
+    <script src="sketch6.js"></script>
+   </div>
+    
+        <!--
+   <div class="form">
+    <form action="begin-create-done.html" method="get">
+    First Name: <input type="text" name="firstname">
+    <br>
+    Last Name: <input type="text" name="lastname">
+    <br>
+    <br>
+    New Username: <input type="text" name="user">
+    <br>
+    Password: <input type="password" name="pass">
+    <br>
+    Repeat Password: <input type="password" name="rpass">
+    <input type="submit" value="Submit">
+    </form>
+      <h3>Results</h3>
+      formValues.firstname = <span id="firstname"></span><br>
+      formValues.lastname = <span id="lastname"></span><br>
+      formValues.user = <span id="user"></span><br>
+      formValues.pass = <span id="pass"></span><br>
+      formValues.rpass = <span id="rpass"></span><br>
+    <script id="jsbin-javascript">
+        // create the object that will hold the input values
+        var formValues = {};
+        function inputObj(formNR, defaultValues) { 
+          var inputs = formNR.getElementsByTagName('input');
+          for ( var i = 0; i < inputs.length; i++) {
+            formValues[inputs[i].name] = defaultValues[i];
+            if(inputs[i].type === 'text' || inputs[i].type === 'password') {
+              inputs[i].value = defaultValues[i];                            
+              document.getElementById(inputs[i].name).innerHTML = defaultValues[i];
+            }
+            inputs[i].addEventListener('keyup', function() {
+              formValues[this.name] = this.value;
+              document.getElementById(this.name).innerHTML = this.value;
+            }, false);
+          }
+        }
+        // build a little array with the defaultValues for each input
+        var defValues =['defaultFirstName','defaultLastName','defaultUser',
+                         'defaultPass','defaultPass'];
+        // this will push all inputs from the given form in the formValues object.
+        inputObj(document.forms[0], defValues); 
+    </script>
+   </div>
+    -->    
+</div>
+</body></html>
