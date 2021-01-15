@@ -1,6 +1,12 @@
 body {
   background: #012244;
 /*  rh ad*/ margin:0;
+        background-image: url('https://projects.cadre.sjsu.edu/democracyproject/assets/hero.svg'); 
+    background-attachment: fixed; 
+    background-position: 50% 200px; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size:90%; /* Resize the background image to cover the entire container */
+    background-origin: content-box, padding-box;
 }
 
 
