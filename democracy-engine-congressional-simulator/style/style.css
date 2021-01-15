@@ -98,7 +98,7 @@ input[type=range] {
 
 header {
     /*	padding-top: 5px;*/
-    margin: auto;
+    margin: 0;
     width: 100%;
     height: auto;
     z-index: 1;
