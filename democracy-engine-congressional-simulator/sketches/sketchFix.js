@@ -763,109 +763,115 @@ function finalDisplay() {
 
   if (bodyCount == numBodies) {
     setTimeout(function() {
-      document.body.style.backgroundColor = "black";
+        document.body.style.backgroundColor = "black";
 
 
-      textAlign(LEFT, TOP);
-      fill(color("#faf4d3"));
-      noStroke();
-      rectMode(CORNER);
-      resBColor.setAlpha(200);
-      fill(resBColor);
-      rect(0, 0, dWidth, dHeight);
-      textStyle(NORMAL);
+        textAlign(LEFT, TOP);
+        fill(color("#faf4d3"));
+        noStroke();
+        rectMode(CORNER);
+        resBColor.setAlpha(200);
+        fill(resBColor);
+        rect(0, 0, dWidth, dHeight);
+        textStyle(NORMAL);
 
 
-      //NEED TO CHANGE LATER FOR MORE THAN 3 BODIES
-      for (let i = 0; i < numBodies; i++) {
-        fill(255);
-        if (i == 0) {
-          currentBodyLabel = 'HOUSE';
-        } else if (i == 1) {
-          currentBodyLabel = 'SENATE';
-        } else if (i == 2) {
-          currentBodyLabel = 'VICE PRESIDENT';
-        } else if (i == 3) {
-          // print("I AM IN PRESIDENT b4 LOGIC");
-          currentBodyLabel = 'PRESIDENT';
-        }
+        //NEED TO CHANGE LATER FOR MORE THAN 3 BODIES
+        for (let i = 0; i < numBodies; i++) {
+          fill(255);
+          if (i == 0) {
+            currentBodyLabel = 'HOUSE';
+          } else if (i == 1) {
+            currentBodyLabel = 'SENATE';
+          } else if (i == 2) {
+            currentBodyLabel = 'VICE PRESIDENT';
+          } else if (i == 3) {
+            // print("I AM IN PRESIDENT b4 LOGIC");
+            currentBodyLabel = 'PRESIDENT';
+          }
 
-        //yay and nay votes for each voting body
-        //y = the i*dispW
+          //yay and nay votes for each voting body
+          //y = the i*dispW
 
-        if (i < votingBodyCounts.length) {
+          if (i < votingBodyCounts.length) {
 
-          print("i = " + i + " and current body label = " + currentBodyLabel);
+            print("i = " + i + " and current body label = " + currentBodyLabel);
 
-          if (currentBodyLabel == 'PRESIDENT') {
-            textSize(23);
-            text(currentBodyLabel, (i - 1) * dispW + padX, padY, dispW, dispH);
-            textAlign(LEFT);
+            if (currentBodyLabel == 'PRESIDENT') {
+              textSize(23);
+              text(currentBodyLabel, (i - 1) * dispW + padX, padY, dispW, dispH);
+              textAlign(LEFT);
 
-            if (stopVoteArr[i] == false) {
-              textSize(20);
-              text("\n\nVOTES \n", (i - 1) * dispW + padX, padY, dispW, dispH);
-              textSize(16);
-              text("\n\n\n\nYES: " + votingBodyCounts[i][0] + "\nNO: " + votingBodyCounts[i][1] + "\n ", (i - 1) * dispW + padX, padY, dispW, dispH);
+              if (stopVoteArr[i] == false) {
+                textSize(20);
+                text("\n\nVOTES \n", (i - 1) * dispW + padX, padY, dispW, dispH);
+                textSize(16);
+                text("\n\n\n\nYES: " + votingBodyCounts[i][0] + "\nNO: " + votingBodyCounts[i][1] + "\n ", (i - 1) * dispW + padX, padY, dispW, dispH);
 
 
-              print("President: \n\n\n\nYES: " + votingBodyCounts[3][0] + "\nNO: " + votingBodyCounts[3][1]);
-              //president veto/super
-              if (bodyPass[0] === true && bodyPass[1] === true && bodyPass[3] === false) {
-                if (superThreshIndex[0] === true && superThreshIndex[1] === true) {
-                  text('VETO OVERRIDEN BY SUPER MAJORITY IN ALL HOUSES: NO PRESIDENTIAL VOTE', (i - 1) * dispW + padX, dHeight / 4, dispW, dispH);
+                // print("President: \n\n\n\nYES: " + votingBodyCounts[3][0] + "\nNO: " + votingBodyCounts[3][1]);
+                //president veto/super
+
+                if (bodyPass[0] === true && bodyPass[1] === true && bodyPass[3] === false) {
+                  if (superThreshIndex[0] === true && superThreshIndex[1] === true) {
+                    text('VETO OVERRIDEN BY SUPER MAJORITY IN ALL HOUSES: NO PRESIDENTIAL VOTE', (i - 1) * dispW + padX, dHeight / 4, dispW, dispH);
+                  } else {
+                    text('PRESIDENT VETOS: BILL IS NOT APPROVED ', (i - 1) * dispW + padX, (i - 1) * dispW + padX, dHeight / 4, dispW, dispH);
+                  }
+                } else if (bodyPass[i] == true &&
+                  superThreshIndex[0] == false ||
+                  superThreshIndex[1] == false) {
+                  text('\nBILL IS APPROVED', (i - 1) * dispW + padX, dHeight / 4, dispW, dispH);
+                } else if (bodyPass[i] == false) {
+                  text('\nBILL IS NOT APPROVED ', (i - 1) * dispW + padX, dHeight / 4, dispW, dispH);
+                }
+              } else {
+                textSize(16);
+                if (bodyPass[0] == false || bodyPass[1] == false) {
+                  // dispY = dispY + (dHeight / 5);
+                  text('BILL IS NOT APPROVED BY ALL HOUSES: NO PRESIDENTIAL VOTE', (i - 1) * dispW + padX, padY, dispW, dispH);
                 } else {
-                  text('PRESIDENT VETOS: BILL IS NOT APPROVED ', (i - 1) * dispW + padX, (i - 1) * dispW + padX, dHeight / 4, dispW, dispH);
+                  text('\n\nDOES NOT VOTE', (i - 1) * dispW + padX, padY, dispW, dispH);
                 }
-              } else if (bodyPass[0] == false || bodyPass[1] == false) {
-                // dispY = dispY + (dHeight / 5);
-                text('BILL IS NOT APPROVED BY ALL HOUSES: NO PRESIDENTIAL VOTE', (i - 1) * dispW + padX, dHeight / 3, dispW, dispH);
-              } else if (bodyPass[i] == true &&
-                superThreshIndex[0] == false ||
-                superThreshIndex[1] == false) {
-                text('\nBILL IS APPROVED', (i - 1) * dispW + padX, dHeight / 4, dispW, dispH);
+              }
+
+            } else if (currentBodyLabel == 'VICE PRESIDENT') {
+              textSize(23);
+              text(currentBodyLabel, i * dispW + padX, dHeight / 2, dispW, dispH);
+              if (stopVoteArr[i] == false && vpVote == true) {
+                textSize(20);
+                text("\n\nVOTES \n", i * dispW + padX, dHeight / 2, dispW, dispH);
+                textSize(16);
+                text("\n\n\n\nYES: " + votingBodyCounts[i][0] + "\nNO: " + votingBodyCounts[i][1] + "\n ", i * dispW + padX, dHeight / 2, dispW, dispH);
+
+                if (bodyPass[0] == false || bodyPass[1] == false) {
+                  text('\n\n\nBILL IS NOT APPROVED BY ALL HOUSES: NO VP VOTE', i * dispW + padX, dHeight * (3 / 4), dispW, dispH);
+                } else if (bodyPass[0] == true && bodyPass[1] == true && vpVote == true) {
+                  text('\n\n\nTIE BREAKER VOTE INITIATED', i * dispW + padX, dHeight * (3 / 4), dispW, dispH);
+                  if (bodyPass[i] == false) {
+                    text('\nBILL IS NOT APPROVED', (i) * dispW + padX, dHeight * (3 / 4), dispW, dispH);
+                  } else if (bodyPass[i] == true) {
+                    text('\nBILL IS APPROVED', (i) * dispW + padX, dHeight * (3 / 4), dispW, dispH);
+                  }
+                }
+
+              } else {
+                textSize(16);
+                text('\n\nDOES NOT VOTE', i * dispW + padX, dHeight / 2, dispW, dispH);
+              }
+
+            } else {
+              textSize(23);
+              text(currentBodyLabel, i * dispW + padX, padY, dispW, dispH);
+              if (stopVoteArr[i] == false) {
+                textSize(20);
+                text("\n\nVOTES \n", i * dispW + padX, padY, dispW, dispH);
+                textSize(16);
+                text("\n\n\n\nYES: " + votingBodyCounts[i][0] + "\nNO: " + votingBodyCounts[i][1] + "\n ", i * dispW + padX, padY, dispW, dispH);
+                // superthresh
+                if (bodyPass[i] == true && superThreshIndex[i] == true) {
+                  text('BILL IS APPROVED WITH SUPER MAJORITY' + "\n ", i * dispW + padX, dHeight / 4, dispW, dispH);
               } else if (bodyPass[i] == false) {
-                text('\nBILL IS NOT APPROVED ', (i - 1) * dispW + padX, dHeight / 4, dispW, dispH);
-              }
-            } else {
-              textSize(16);
-              text('\n\nDOES NOT VOTE', (i - 1) * dispW + padX, padY, dispW, dispH);
-            }
-          } else if (currentBodyLabel == 'VICE PRESIDENT') {
-            textSize(23);
-            text(currentBodyLabel, i * dispW + padX, dHeight / 2, dispW, dispH);
-            if (stopVoteArr[i] == false && vpVote == true) {
-              textSize(20);
-              text("\n\nVOTES \n", i * dispW + padX, dHeight / 2, dispW, dispH);
-              textSize(16);
-              text("\n\n\n\nYES: " + votingBodyCounts[i][0] + "\nNO: " + votingBodyCounts[i][1] + "\n ", i * dispW + padX, dHeight / 2, dispW, dispH);
-
-              if (bodyPass[0] == false || bodyPass[1] == false) {
-                text('\n\n\nBILL IS NOT APPROVED BY ALL HOUSES: NO VP VOTE', i * dispW + padX, dHeight * (3 / 4), dispW, dispH);
-              } else if (bodyPass[0] == true && bodyPass[1] == true && vpVote == true) {
-                text('\n\n\nTIE BREAKER VOTE INITIATED', i * dispW + padX, dHeight * (3 / 4), dispW, dispH);
-                if (bodyPass[i] == false) {
-                  text('\nBILL IS NOT APPROVED', (i) * dispW + padX, dHeight * (3 / 4), dispW, dispH);
-                } else if (bodyPass[i] == true) {
-                  text('\nBILL IS APPROVED', (i) * dispW + padX, dHeight * (3 / 4), dispW, dispH);
-                }
-              }
-
-            } else {
-              textSize(16);
-              text('\n\nDOES NOT VOTE', i * dispW + padX, dHeight / 2, dispW, dispH);
-            }
-
-          } else {
-            textSize(23);
-            text(currentBodyLabel, i * dispW + padX, padY, dispW, dispH);
-            if (stopVoteArr[i] == false) {
-              textSize(20);
-              text("\n\nVOTES \n", i * dispW + padX, padY, dispW, dispH);
-              textSize(16);
-              text("\n\n\n\nYES: " + votingBodyCounts[i][0] + "\nNO: " + votingBodyCounts[i][1] + "\n ", i * dispW + padX, padY, dispW, dispH);
-
-              if (bodyPass[i] == false) {
                 text('\nBILL IS NOT APPROVED', i * dispW + padX, dHeight / 4, dispW, dispH);
               } else if (bodyPass[i] == true && superThreshIndex[i] == false) {
                 text('\nBILL IS APPROVED', i * dispW + padX, dHeight / 4, dispW, dispH);
@@ -876,11 +882,7 @@ function finalDisplay() {
             }
           }
 
-          // superthresh
-          if (bodyPass[i] == true && superThreshIndex[i] == true && currentBodyLabel != 'PRESIDENT' && currentBodyLabel != 'VICE PRESIDENT') {
-            textSize(16);
-            text('BILL IS APPROVED ' + currentBodyLabel + ' WITH SUPER MAJORITY' + "\n ", i * dispW + padX, dHeight / 3, dispW, dispH);
-          }
+
         }
 
         //regular pass
@@ -907,7 +909,7 @@ function finalDisplay() {
 
     }, 2000);
 
-  }
+}
 
 }
 
