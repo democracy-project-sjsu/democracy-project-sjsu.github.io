@@ -1,2 +1,3 @@
 # democracy-project-sjsu.github.io
-repo for the us government congressional simulator
+archived new location: https://github.com/the-democracy-project/the-democracy-project
+
